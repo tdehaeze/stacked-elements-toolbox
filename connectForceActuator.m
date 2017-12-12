@@ -1,14 +1,14 @@
 function [connected_system] = connectForceActuator(system, actuator)
-% connectForceActuator - 
+% connectForceActuator - Connect a force actuator to a system
 %
 % Syntax: connectForceActuator(system, actuator)
 %
 % Inputs:
-%    system   - 
-%    actuator - 
+%    system   - A MIMO transfer function
+%    actuator - An actuator created by createForceActuator function
 %
 % Outputs:
-%    - connected_system - 
+%    - connected_system - A MIMO transfer function corresponding to the system and the actuator connected
 %
 % Example:
 %    

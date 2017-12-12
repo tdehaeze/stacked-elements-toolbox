@@ -1,16 +1,16 @@
 function [element] = createElement(i, m, k, c)
-% createElement - 
+% createElement - Create a Spring-Mass-Damper Element
 %
 % Syntax: createElement(i, m, k, c)
 %
 % Inputs:
-%     i - 
+%     i - Index of the element in the system
 %     m - mass (Kg)
 %     k - Stiffness (N/m)
 %     c - Damping (N/(m.s-1))
 %
 % Outputs:
-%    - element - 
+%    - element - MIMO transfer function of the created element
 %
 % Example:
 %    

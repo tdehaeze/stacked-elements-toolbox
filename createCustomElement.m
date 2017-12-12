@@ -1,17 +1,17 @@
 function [custom_element] = createCustomElement(i, Txtox, Tftox, Txtof, Tftof)
-% createCustomElement - 
+% createCustomElement - Create a custom element using transfer functions.
 %
 % Syntax: createCustomElement(i, Txtox, Tftox, Txtof, Tftof)
 %
 % Inputs:
-%    i - 
-%    Txtox - 
-%    Tftox - 
-%    Txtof - 
-%    Tftof - 
+%    i     - Index of the element in the system
+%    Txtox - Transfer function from displacement of the support to displacement of the element
+%    Tftox - Transfer function from force applied to the element to its displacement
+%    Txtof - Transfer function from displacement of the support to force applied on the support by the element
+%    Tftof - Transfer function from force applied to the element to the force applied on the support by the element
 %
 % Outputs:
-%    - custom_element - 
+%    - custom_element - MIMO transfer function of the element
 %
 % Example:
 %    

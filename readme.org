@@ -26,3 +26,5 @@ if not, throw an error
 
 
 
+*** TODO Create a sensor and connect a sensor functions
+*** TODO Add a parameter to the createForceActuator that permit to add custom transfer function to the actuator
