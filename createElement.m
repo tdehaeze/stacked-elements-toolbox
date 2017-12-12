@@ -4,10 +4,10 @@ function [element] = createElement(i, m, k, c)
 % Syntax: createElement(i, m, k, c)
 %
 % Inputs:
-%     i - Index of the element in the system
-%     m - mass (Kg)
-%     k - Stiffness (N/m)
-%     c - Damping (N/(m.s-1))
+%     - i - Index of the element in the system
+%     - m - mass (Kg)
+%     - k - Stiffness (N/m)
+%     - c - Damping (N/(m.s-1))
 %
 % Outputs:
 %    - element - MIMO transfer function of the created element
@@ -21,10 +21,10 @@ function [element] = createElement(i, m, k, c)
 %%
 s = tf('s');
 
-Txtof = (-m*s^2*(c*s+k))/(m*s^2 + c*s + k);
-Tftof = (c*s+k)/(m*s^2 + c*s + k);
-Txtox = (c*s+k)/(m*s^2 + c*s + k);
-Tftox = 1/(m*s^2 + c*s + k);
+Txtof = (-m*s^2 * (c*s + k))/(m*s^2 + c*s + k);
+Tftof =            (c*s + k)/(m*s^2 + c*s + k);
+Txtox =            (c*s + k)/(m*s^2 + c*s + k);
+Tftox =                    1/(m*s^2 + c*s + k);
 
 %%
 element = [Txtox Tftox Tftox;...

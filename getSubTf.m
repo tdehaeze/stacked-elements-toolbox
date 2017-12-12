@@ -1,15 +1,16 @@
 function [sub_tf] = getSubTf(mimo_tf, input_name, output_name)
-% getSubTf - 
+% getSubTf - Get a SISO transfer function from the MIMO transfer function mimo_tf.
+%            The SISO transfer function corresponds is the one between 'input_name' and 'output_name'
 %
 % Syntax: getSubTf(mimo_tf, input_name, output_name)
 %
 % Inputs:
-%    mimo_tf     - 
-%    input_name  - 
-%    output_name - 
+%    - mimo_tf     - A MIMO transfer function with named inputs and outputs
+%    - input_name  - The name of the input
+%    - output_name - The name of the output
 %
 % Outputs:
-%    - sub_tf - 
+%    - sub_tf - Á transfer function corresponding to the transfer function between the input_name of the mimo_tf to the output_name
 %
 % Example:
 %    granite = createElement(1, 1500, 5e9, 1);
