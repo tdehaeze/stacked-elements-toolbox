@@ -1,0 +1,28 @@
+* Spring Damper Matlab
+
+** Functions
+
+[[file./create_element.m][create_element]]
+
+[[file./create_force_actuator.m][create_force_actuator]]
+
+[[file./access_sub.m][access_sub_tf]]
+
+** TODO Taks
+
+- Simulink
+  - Simulink Library
+  - Voir comment simplement mettre des valeurs de variable depuis Simulink
+  - Voir comment intégrer dans simulink le modèle obtenu sur matlab
+- Documentation
+  - Faire des fichiers TikZ pour présenter l'idée
+- Refaire la fonction create_element et peut être faire un truc plus à la main que en utilisant lft
+
+*** TODO Pour ce qui n'est pas des fonctions, faire des live script
+Afficher au début un petit schema tikz pour expliquer ce qu'on fait
+
+*** TODO [[file:./access_sub_tf][access_sub_tf]] - Check if the input and output are defined in the system
+if not, throw an error
+
+
+

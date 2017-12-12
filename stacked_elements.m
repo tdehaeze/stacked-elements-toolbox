@@ -1,4 +1,6 @@
+%% Init
 clear all;
+close all;
 clc;
 
 %% Create Mass Damper Sub-Systems and Force Actuator
@@ -33,6 +35,7 @@ bode(access_sub_tf(sys_lorentz, 'x0', 'd5'));
 bode(access_sub_tf(sys_piezo, 'x0', 'd5'));
 legend({'Lorentz', 'Piezo'})
 hold off;
+%export_fig './figures/bode_diag_connected_elem' -png -pdf -transparent;
 
 figure; hold on;
 bode(access_sub_tf(sys_lorentz, 'F', 'd5'));
