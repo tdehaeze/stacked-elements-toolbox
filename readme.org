@@ -1,30 +1,27 @@
 * Spring Damper Matlab
 
 ** Functions
+*** [[file./create_element.m][create_element]]
+*** [[file./create_force_actuator.m][create_force_actuator]]
+*** [[file./access_sub.m][access_sub_tf]]
 
-[[file./create_element.m][create_element]]
 
-[[file./create_force_actuator.m][create_force_actuator]]
 
-[[file./access_sub.m][access_sub_tf]]
-
-** TODO Taks
-
-- Simulink
-  - Simulink Library
-  - Voir comment simplement mettre des valeurs de variable depuis Simulink
-  - Voir comment intégrer dans simulink le modèle obtenu sur matlab
-- Documentation
-  - Faire des fichiers TikZ pour présenter l'idée
-- Refaire la fonction create_element et peut être faire un truc plus à la main que en utilisant lft
-
-*** TODO Pour ce qui n'est pas des fonctions, faire des live script
-Afficher au début un petit schema tikz pour expliquer ce qu'on fait
-
+* Tasks
+** General Tasks [2/5]
 *** TODO [[file:./access_sub_tf][access_sub_tf]] - Check if the input and output are defined in the system
+    DEADLINE: <2017-12-13 Wed>
 if not, throw an error
+*** TODO Make a toolbox
+https://fr.mathworks.com/help/matlab/matlab_prog/create-and-share-custom-matlab-toolboxes.html
 
+*** TODO Refaire la fonction create_element et peut être faire un truc plus à la main que en utilisant lft
 
+** Simulink Tasks [0/3]
+*** TODO Simulink Library
+*** TODO Voir comment simplement mettre des valeurs de variable depuis Simulink
+*** TODO Voir comment intégrer dans simulink le modèle obtenu sur matlab
 
-*** TODO Create a sensor and connect a sensor functions
-*** TODO Add a parameter to the createForceActuator that permit to add custom transfer function to the actuator
+** Documentation Tasks [0/1]
+*** TODO Faire des fichiers TikZ pour présenter l'idée
+
