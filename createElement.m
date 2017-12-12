@@ -13,7 +13,10 @@ function [element] = createElement(i, m, k, c)
 %    - element - MIMO transfer function of the created element
 %
 % Example:
-%    
+%    granite = createElement(1, 1500, 5e9, 1);
+%    sample = createElement(2, 50, 1e9, 1);
+%    system = connectElements({granite, sample});
+%    bode(getSubTf(system, 'x0', 'd2'), getSubTf(granite, 'x0', 'd1'));
 
 %%
 s = tf('s');

@@ -10,8 +10,10 @@ function [connected_system] = connectElements(systems)
 %    - connected_system - Return one MIMO transfer function corresponding to the total connected system
 %
 % Example:
-%    
-
+%    granite = createElement(1, 1500, 5e9, 1);
+%    sample = createElement(2, 50, 1e9, 1);
+%    system = connectElements({granite, sample});
+%    bode(getSubTf(system, 'x0', 'd2'), getSubTf(granite, 'x0', 'd1'));
 
 connected_system = systems{1};
 

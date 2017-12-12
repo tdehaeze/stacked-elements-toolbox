@@ -14,7 +14,9 @@ function [custom_element] = createCustomElement(i, Txtox, Tftox, Txtof, Tftof)
 %    - custom_element - MIMO transfer function of the element
 %
 % Example:
-%    
+%    custom_element = createCustomElement(1, tf_xtox, tf_ftox, tf_xtof, tf_ftof);
+%    sample = createElement(2, 20, 1e8, 1);
+%    system = connectElements({custom_element, sample});
 
 %%
 if ~exist('Txtof','var')

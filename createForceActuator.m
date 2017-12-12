@@ -11,7 +11,12 @@ function [force_actuator] = createForceActuator(above_i, bellow_i)
 %    - force_actuator - Transfer function of the actuator with the correct input and output names.
 %
 % Example:
-%    
+%    granite = createElement(1, 1500, 5e9, 1);
+%    sample = createElement(2, 50, 1e9, 1);
+%    system = connectElements({granite, sample});
+%    force_actuator = createForceActuator(1, 2);
+%    system = connectForceActuator(system, force_actuator);
+%    bode(getSubTf(system, 'F', 'd2'));
 
 
 force_actuator = [tf(-1); tf(1)];
