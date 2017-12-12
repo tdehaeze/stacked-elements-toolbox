@@ -1,7 +1,7 @@
 function [connected_system] = connectElements(systems, opts_param)
 % connectElements - Connect all the elements of the systems cell array
 %
-% Syntax: connectElements(systems)
+% Syntax: connectElements(systems, opts_param)
 %
 % Inputs:
 %    - systems - Cell Array containing all the elements of the system. The elements should be in the right order (i from 1 to n)

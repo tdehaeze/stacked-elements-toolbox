@@ -1,5 +1,5 @@
 %% Init
-clear all;
+clear;
 close all;
 clc;
 
@@ -11,7 +11,8 @@ npositionning_lorentz = createElement(4, 15, 1e4, 1);
 npositionning_piezo = createElement(4, 15, 5e7, 1);
 sample = createElement(5, 50, 1e9, 1);
 
-F = createForceActuator(3, 4);
+F = createForceActuator(3, 4, tf(1));
+S = createDisplacementSensor(1, 4, tf(1));
 
 %% Connect all the Sub-Systems
 sys_lorentz = connectElements({granite, ...
@@ -20,6 +21,7 @@ sys_lorentz = connectElements({granite, ...
                                 npositionning_lorentz, ...
                                 sample});
 sys_lorentz = connectForceActuator(sys_lorentz, F);
+sys_lorentz = connectDisplacementSensor(sys_lorentz, S);
 
 sys_piezo = connectElements({granite, ...
                               spindle, ...

@@ -1,13 +1,13 @@
-function [force_actuator] = createForceActuator(above_i, bellow_i, actuator_tf, opts_params)
+function [force_actuator] = createForceActuator(above_i, bellow_i, actuator_tf, opts_param)
 % createForceActuator - Create a force actuator between the system of index 'bellow_i' and the system of index 'above_i'.
 %
-% Syntax: createForceActuator(above_i, bellow_i)
+% Syntax: createForceActuator(above_i, bellow_i, opts_param)
 %
 % Inputs:
 %    - above_i     - Index of the bottom element where the actuator is fixed
 %    - bellow_i    - Index of the top element where the actuator is fixed
 %    - actuator_tf - Transfer function of the actuator. From the input signal to the output force (N)
-%    - opts_param   - Optionals parameters: structure with the following fields:
+%    - opts_param - Optionals parameters: structure with the following fields:
 %        - act_input_name  (default: ['F', num2str(above_i), num2str(bellow_i)])      - Name of the input of the actuator
 %        - act_output_name (default: ['F', num2str(above_i), num2str(bellow_i), 'N']) - Name of the output of the actuator
 %
