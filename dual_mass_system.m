@@ -26,9 +26,10 @@ t  = 0:1e-5:2;
 commands = struct();
 commands.F12 = 1*(t > 0.1);
 %commands.x0 = 1e-6*(t > 0.2);
-output_names = {'d1', 'd2', 'D12'};
+options = struct();
+%options.output_names = {'d1', 'd2', 'D12'};
 
-system_output = systemSimulation(system, t, commands, output_names);
+system_output = systemSimulation(system, t, commands, options);
 
 figure; hold on;
 plot(system_output.time, system_output.d1)
