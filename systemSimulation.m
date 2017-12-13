@@ -14,7 +14,7 @@ function system_response = systemSimulation(system, t, commands, output_names, o
 % Outputs:
 %    - system_response - Structure that contains all the outputs specified in output_names parameter
 %
-% Example:
+% Example: TODO
 
 %% Default value for opts
 opts = struct();
@@ -37,12 +37,12 @@ end
 
 %% Initialize and populate the command Vector
 system_command = zeros(length(fieldnames(commands)), length(t));
-inputs_index = zeros(length(fieldnames(commands)));
+inputs_index = zeros(size(fieldnames(commands)));
 i = 1;
 for input_name = fieldnames(commands)'
     assert(all(size(t) == size(commands.(input_name{1}))), ...
            'Size of time vector and %s command vector should be the same', input_name{1});
-    assert(isfield(system.InputName, input_name{1}), ...
+    assert(sum(ismember(system.InputName, input_name{1})) == 1, ...
            '%s is not an input of the system', input_name{1});
     system_command(i, :) = commands.(input_name{1});
     inputs_index(i) = find(ismember(system.InputName, input_name{1}));
@@ -53,18 +53,27 @@ end
 system_response = struct();
 
 %% Create the vectors of inputs index and outputs index
-outputs_index = zeros(length(output_names));
+outputs_index = zeros(size(output_names));
 for output_name = output_names
     assert(sum(ismember(system.OutputName, output_name{1})) == 1, ...
            '%s is not an output of the system', output_name{1});
     outputs_index(find(ismember(output_names, output_name{1}))) = find(ismember(system.OutputName, output_name{1}));
 end
 
-%% TODO - Create a subsystem with just the inputs and outputs that we want. This should reduce the computation time.
+%% Create a subsystem with just the inputs and outputs that we want. This should reduce the computation time.
 sub_system = system(outputs_index, inputs_index);
+sub_system.InputName
+sub_system.OutputName
 
 %% Compute the system response
-system_response = lsim(sub_system, system_command, t);
+system_res = lsim(sub_system, system_command, t);
+
+%% Format the output
+system_response = struct();
+system_response.time = t;
+for output_name = output_names
+    system_response.(output_name{1}) = system_res(:, find(ismember(output_names, output_name{1})));
+end
 
 end
 
