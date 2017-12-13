@@ -10,13 +10,12 @@
 * Tasks
 ** General Tasks [2/5]
 *** TODO [[file:./access_sub_tf][access_sub_tf]] - Check if the input and output are defined in the system
-    DEADLINE: <2017-12-13 Wed>
 if not, throw an error
 *** TODO Make a toolbox
 https://fr.mathworks.com/help/matlab/matlab_prog/create-and-share-custom-matlab-toolboxes.html
 
 *** TODO Refaire la fonction create_element et peut être faire un truc plus à la main que en utilisant lft
-
+    
 ** Simulink Tasks [0/3]
 *** TODO Simulink Library
 *** TODO Voir comment simplement mettre des valeurs de variable depuis Simulink
