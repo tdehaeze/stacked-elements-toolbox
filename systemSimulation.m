@@ -14,7 +14,25 @@ function system_response = systemSimulation(system, t, commands, opts_param)
 % Outputs:
 %    - system_response - Structure that contains all the outputs
 %
-% Example: TODO
+% Example:
+%    s1 = createElement(1, 150, 1e7, 100);
+%    s2 = createElement(2, 20,  2e6, 100);
+%    system = connectElements({s1, s2});
+%
+%    t  = 0:1e-5:2;
+%    commands = struct();
+%    commands.x0 = 1e-6*(t > 0.2);
+%    options = struct();
+%    options.output_names = {'d1', 'd2'};
+%
+%    system_output = systemSimulation(system, t, commands, options);
+%
+%    figure; hold on;
+%    plot(system_output.time, system_output.d1)
+%    plot(system_output.time, system_output.d2)
+%    legend({'d1', 'd2'})
+%    hold off;
+
 
 %% Default value for opts
 opts = struct('output_names', {system.OutputName'}); % Take all the output
