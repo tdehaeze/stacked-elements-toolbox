@@ -1,26 +1,11 @@
 * Spring Damper Matlab
 
-** Functions
-*** [[file./create_element.m][create_element]]
-*** [[file./create_force_actuator.m][create_force_actuator]]
-*** [[file./access_sub.m][access_sub_tf]]
+** Installation
+   
+Add ~./src/~ to your Matlab path.
 
 
+** Example
 
-* Tasks
-** General Tasks [2/5]
-*** TODO [[file:./access_sub_tf][access_sub_tf]] - Check if the input and output are defined in the system
-if not, throw an error
-*** TODO Make a toolbox
-https://fr.mathworks.com/help/matlab/matlab_prog/create-and-share-custom-matlab-toolboxes.html
-
-*** TODO Refaire la fonction create_element et peut être faire un truc plus à la main que en utilisant lft
-    
-** Simulink Tasks [0/3]
-*** TODO Simulink Library
-*** TODO Voir comment simplement mettre des valeurs de variable depuis Simulink
-*** TODO Voir comment intégrer dans simulink le modèle obtenu sur matlab
-
-** Documentation Tasks [0/1]
-*** TODO Faire des fichiers TikZ pour présenter l'idée
+See ~./demo/dual_mass_system.m~.
 
