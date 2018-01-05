@@ -11,5 +11,5 @@ See [[./demo/dual_mass_system.m]].
 
 ** Documentation
 
-See [[./doc/presentation_connection.org]].
+See [[./doc/presentation_connection.pdf]].
 
