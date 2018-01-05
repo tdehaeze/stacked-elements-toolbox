@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-12-20 Wed 15:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How to connect a model to a flexible support</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to connect a model to a flexible support</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9b2dd11">1. Method 1 - Connection of multiple Mass-Spring-Damper systems</a>
+<ul>
+<li><a href="#org27e52ce">1.1. Mass-Spring-Damper representation</a></li>
+<li><a href="#org042ce4c">1.2. General representation</a></li>
+<li><a href="#org388700b">1.3. System connection - General Case</a></li>
+<li><a href="#org538a708">1.4. System connection - 2 System case</a></li>
+<li><a href="#org354f5da">1.5. System connection - Example</a></li>
+<li><a href="#orgf745f62">1.6. Matlab Implementation</a></li>
+</ul>
+</li>
+<li><a href="#orgd3379ca">2. Method 2 - How to connect a model on top of a flexible support</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9b2dd11" class="outline-2">
+<h2 id="org9b2dd11"><span class="section-number-2">1</span> Method 1 - Connection of multiple Mass-Spring-Damper systems</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a id="org4b49ba2"></a>
+</p>
+</div>
+
+<div id="outline-container-org27e52ce" class="outline-3">
+<h3 id="org27e52ce"><span class="section-number-3">1.1</span> Mass-Spring-Damper representation</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<a id="org97d0c60"></a>
+</p>
+
+<p>
+Let's consider a simple Mass-Spring-Damper system that is on top of an other mecanical system (see figure <a href="#org935b5f4">1</a>).
+</p>
+
+
+<div id="org935b5f4" class="figure">
+<p><img src="./figures/system_i.png" alt="system_i.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Basic Mass-Spring-Damper</p>
+</div>
+
+
+\begin{equation*}
+  \begin{cases}
+    x_i& \text{is the displacment of the system i}\\
+    x_{i-1}& \text{is the displacment of the flexible support}\\
+    f_{i+1}& \text{is the force applied by the system on top of this one (could be zero)}\\
+    g_i& \text{is the force applied to the system (actuator forces for instance)}\\
+    f_i& \text{is the force that the system applies on the flexible support}
+  \end{cases}
+\end{equation*}
+
+<p>
+Second Newton's laws of motion on the mass \(m_i\):
+</p>
+
+<p>
+\[ m_i \ddot{x} = k_i (x_{i-1} - x_i) + c_i (\dot{x_{i-1}} - \dot{x_i}) + g_i + f_{i+1} \]
+</p>
+
+<p>
+\[ m_i \ddot{x} + c_i \dot{x_i} + k_i x_i = c_i \dot{x_{i-1}} + k_i x_{i-1} + g_i + f_{i+1} \]
+</p>
+
+<p>
+By doing a Laplace tranformation, we have:
+</p>
+
+<p>
+\[ ( m_i s^2 + c_i s + k_i ) X_i = ( c_i s + k_i ) X_{i-1} + G_i + F_{i+1} \]
+</p>
+
+<p>
+Finally:
+</p>
+
+\begin{equation}
+  X_i = \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i} X_{i-1} +
+        \frac{1}{m_i s^2 + c_i s + k_i} G_i +
+        \frac{1}{m_i s^2 + c_i s + k_i} F_{i+1}
+\end{equation}
+
+<p>
+\[
+    X_i = T_{x_{i-1} \rightarrow x_i} X_{i-1} + T_{g_i \rightarrow x_i} G_i + T_{f_{i+1} \rightarrow x_i} F_{i+1}
+\]
+</p>
+
+
+<p>
+With:
+</p>
+
+\begin{equation*}
+  \begin{cases}
+  T_{x_{i-1} \rightarrow x_i} &= \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i}\\
+  T_{g_i \rightarrow x_i} &= \frac{1}{m_i s^2 + c_i s + k_i}\\
+  T_{f_{i+1} \rightarrow x_i} &= \frac{1}{m_i s^2 + c_i s + k_i}
+  \end{cases}
+\end{equation*}
+
+
+<p>
+Now, let's express the force \(f_i\):
+</p>
+
+<p>
+\[ f_i = k_i (x_i - x_{i-1}) + c_i (\dot{x_i} - \dot{x_{i-1}}) \]
+</p>
+
+<p>
+By doing a Laplace tranformation, we have:
+</p>
+
+<p>
+\[ F_i = (X_i - X_{i-1}) ( c_i s + k_i ) \]
+</p>
+
+<p>
+And finally by reinjecting \(X_i\) into the last equation, we have the following equation:
+</p>
+
+\begin{equation}
+  F_i = \frac{- m_i s^2 (c_i s + k_i)}{m_i s^2 + c_i s + k_i} X_{i-1} +
+        \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i} G_i +
+        \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i} F_{i+1}
+\end{equation}
+
+<p>
+\[
+  F_i = T_{x_{i-1} \rightarrow f_i} X_{i-1} +
+        T_{g_i \rightarrow f_i} G_i +
+        T_{f_{i+1} \rightarrow f_i} F_{i+1}
+\]
+</p>
+
+<p>
+With:
+</p>
+
+\begin{equation*}
+  \begin{cases}
+  T_{x_{i-1} \rightarrow f_i} &= \frac{- m_i s^2 (c_i s + k_i)}{m_i s^2 + c_i s + k_i}\\
+  T_{g_i \rightarrow f_i} &= \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i}\\
+  T_{f_{i+1} \rightarrow f_i} &= \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i}
+  \end{cases}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org042ce4c" class="outline-3">
+<h3 id="org042ce4c"><span class="section-number-3">1.2</span> General representation</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<a id="org0c60bf1"></a>
+</p>
+
+<p>
+So we have a representation of the system with 3 inputs and 2 outputs (figure <a href="#org32e078e">2</a>).
+This system is governed by the following equation:
+</p>
+
+\begin{equation}
+  \begin{pmatrix}
+  x_i \\
+  f_i
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  T_{x_{i-1} \rightarrow x_i} & T_{g_i \rightarrow x_i} & T_{f_{i+1} \rightarrow x_i} \\
+  T_{x_{i-1} \rightarrow f_i} & T_{g_i \rightarrow f_i} & T_{f_{i+1} \rightarrow f_i}
+  \end{pmatrix}
+  \begin{pmatrix}
+  x_{i-1}\\
+  g_i\\
+  f_{i+1}
+  \end{pmatrix}
+\end{equation}
+
+
+<div id="org32e078e" class="figure">
+<p><img src="./figures/system_schema_i.png" alt="system_schema_i.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Input/Output representation of a system</p>
+</div>
+
+<p>
+That representation of a system with 3 inputs and 2 outputs can be generalized to any system as long as we have all the transfer functions \(T_{g_i\rightarrow x_i}\),&#x2026;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org388700b" class="outline-3">
+<h3 id="org388700b"><span class="section-number-3">1.3</span> System connection - General Case</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Now that we have a system definition with the 3 inputs and 2 outputs (section <a href="#org0c60bf1">1.2</a>). We can try to connect multiple systems (figure <a href="#org4027e45">3</a>).
+</p>
+
+
+<div id="org4027e45" class="figure">
+<p><img src="./figures/system_schema.png" alt="system_schema.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Basic Mass-Spring-Damper - Input/Output representation</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org538a708" class="outline-3">
+<h3 id="org538a708"><span class="section-number-3">1.4</span> System connection - 2 System case</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<a id="org6e71374"></a>   
+</p>
+
+<p>
+Let's begin with a simple case of only 2 systems connected. Then, it is easy to generalized.
+</p>
+
+<p>
+For now, let's ignore:
+</p>
+<ul class="org-ul">
+<li>\(f_0\) the force applied on the system bellow \(S_0\) (probably the ground)</li>
+<li>\(f_2\) the force applied one \(S_1\) because we suppose that there is no system of top of \(S_1\)</li>
+</ul>
+
+<p>
+The connection of the 2 systems (figure <a href="#org4027e45">3</a>) makes a connected system with 3 inputs (\(x_{-1} \quad g_0 \quad g_1\)) and 1 outputs \(x_1\).
+</p>
+
+
+<div id="orge814bc4" class="figure">
+<p><img src="./figures/system_schema_0_1.png" alt="system_schema_0_1.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Connect 2 systems</p>
+</div>
+
+<p>
+We can represent this system with a bloc diagram (figure <a href="#org3ef7657">5</a>).
+</p>
+
+
+<div id="org3ef7657" class="figure">
+<p><img src="./figures/connect_2_systems_blocs.png" alt="connect_2_systems_blocs.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Connect 2 systems - Bloc representation</p>
+</div>
+
+<p>
+Analytically:
+</p>
+
+<p>
+\[
+x_1 = T_{g_1 \rightarrow x_1}^1 g_1 + T_{x_0 \rightarrow x_1}^1 x_0
+\]
+</p>
+
+\begin{align*}
+    x_0 & = T_{g_0 \rightarrow x_0}^0 g_0 + T_{x_{-1} \rightarrow x_0}^0 x_{-1} + T_{f_1 \rightarrow x_0}^0 f_1\\
+        & = T_{g_0 \rightarrow x_0}^0 g_0 + T_{x_{-1} \rightarrow x_0}^0 x_{-1} + T_{f_1 \rightarrow x_0}^0 (T_{x_0 \rightarrow f_1}^1 x_0 + T_{g_1 \rightarrow f_1}^1 g_1)
+\end{align*}
+
+<p>
+\[
+x_0 = \frac{T_{g_0 \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1} g_0 +
+      \frac{T_{x_{-1} \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1} x_{-1} +
+      \frac{T_{f_1 \rightarrow x_0}^0 T_{g_1 \rightarrow f_1}^1}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1} g_1
+\]
+</p>
+
+<p>
+By reinjecting \(x_0\) into the first equation, we have an expression of the output \(x_1\) function of the 3 inputs \(x_{-1} \quad g_0 \quad g_1\).
+</p>
+
+<p>
+\[
+x_1 = (T_{g_1 \rightarrow x_1}^1 + \frac{T_{x_0 \rightarrow x_1}^1 T_{f_1 \rightarrow x_0}^0 T_{g_1 \rightarrow f_1}^1}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1}) g_1 +
+      \frac{T_{x_0 \rightarrow x_1}^1 T_{g_0 \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1} g_0 +
+      \frac{T_{x_0 \rightarrow x_1}^1 T_{x_{-1} \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1} x_{-1}
+\]
+</p>
+
+<p>
+\[
+x_1 = T_{g_1    \rightarrow x_1} g_1 +
+      T_{g_0    \rightarrow x_1} g_0 +
+      T_{x_{-1} \rightarrow x_1} x_{-1}
+\]
+</p>
+
+<p>
+With:
+</p>
+
+\begin{equation*}
+  \begin{cases}
+  T_{g_1    \rightarrow x_1} &= T_{g_1 \rightarrow x_1}^1 + \frac{T_{x_0 \rightarrow x_1}^1 T_{f_1 \rightarrow x_0}^0 T_{g_1 \rightarrow f_1}^1}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1}\\
+  T_{g_0    \rightarrow x_1} &= \frac{T_{x_0 \rightarrow x_1}^1 T_{g_0 \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1}\\
+  T_{x_{-1} \rightarrow x_1} &= \frac{T_{x_0 \rightarrow x_1}^1 T_{x_{-1} \rightarrow x_0}^0}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1}
+  \end{cases}
+\end{equation*}
+
+<p>
+And now we have the analytical expression of the transfer functions of the connected system.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org354f5da" class="outline-3">
+<h3 id="org354f5da"><span class="section-number-3">1.5</span> System connection - Example</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Let's say that we have a flexible support \(S_0\). The only thing we know about this support is the relation between a force applied on top of it to its displacement: \(T_{f_1 \rightarrow x_0}^0\).
+</p>
+
+<p>
+Know, we want to add a mass-spring-damper system on top of this flexible support. We would like to know the displacement of the mass-spring-damper system from a force applied to it, that is to say we want \(T_{g_1 \rightarrow x_1}\).
+</p>
+
+<p>
+\[
+  T_{g_1 \rightarrow x_1} = T_{g_1 \rightarrow x_1}^1 + \frac{T_{x_0 \rightarrow x_1}^1 T_{f_1 \rightarrow x_0}^0 T_{g_1 \rightarrow f_1}^1}{1 - T_{f_1 \rightarrow x_0}^0 T_{x_0 \rightarrow f_1}^1}
+\]
+</p>
+
+\begin{equation*}
+  \begin{cases}
+  T_{x_0 \rightarrow x_1}^1 &= \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i}\\
+  T_{g_1 \rightarrow x_1}^1 &= \frac{1}{m_i s^2 + c_i s + k_i}\\
+  T_{g_1 \rightarrow f_1}^1 &= \frac{c_i s + k_i}{m_i s^2 + c_i s + k_i}\\
+  T_{x_0 \rightarrow f_1}^1 &= \frac{- m_i s^2 (c_i s + k_i)}{m_i s^2 + c_i s + k_i}
+  \end{cases}
+\end{equation*}
+
+<p>
+We can calculate \(T_{g_1 \rightarrow x_1}\), and we obtain:
+</p>
+
+\begin{equation}
+T_{g_1 \rightarrow x_1} = \frac{T_{f_1 \rightarrow x_0}^0(c_1 s + k_1) + 1}{m_i s^s + c_1 s + k_1 + T_{f_1 \rightarrow x_0}^0 m_i s^s (c_1 s + k_1)}
+\end{equation}
+
+<p>
+For instance if the flexible support is just a mass-spring-damper system with parameters \(m_0\) \(k_0\) \(c_0\):
+</p>
+
+<p>
+\[T_{f_1 \rightarrow x_0}^0 = \frac{1}{m_0 s^2 + c_0 s + k_0}\]
+</p>
+
+<p>
+And we finally have:
+</p>
+
+\begin{equation}
+T_{g_1 \rightarrow x_1} = \frac{(c_1 s + k_1) + (m_0 s^2 + c_0 s + k_0)}{(m_0 s^2 + c_0 s + k_0)(m_1 s^2 + c_1 s + k_1) + m_1 s^2 (c_1 s + k_1)}
+\end{equation}
+
+<p>
+Let's verify this.
+</p>
+
+<p>
+Consider the system figure <a id="org99ed2a1"></a>.
+</p>
+
+
+<div id="orgbc2d659" class="figure">
+<p><img src="./figures/systems_0_1.png" alt="systems_0_1.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Dual mass-spring-damper system</p>
+</div>
+
+<p>
+We can applied the second law of Newton to the two masses:
+</p>
+
+\begin{align*}
+    m_1 \ddot{x_1} & = c_1(\dot{x_0} - \dot{x_1}) + k_1 (x_0 - x_1) + g_1\\
+    m_0 \ddot{x_0} & = c_0(\dot{x_{-1}} - \dot{x_0}) + k_0 (x_{-1} - x_0) + c_1(\dot{x_1} - \dot{x_0}) + k_1 (x_1 - x_0) 
+\end{align*}
+
+<p>
+By doing a Laplace transform:
+</p>
+
+\begin{align*}
+    (m_1 s^2 + c_1 s + k_1) x_1               & = (c_1 s + k_1) x_0 + g_1\\
+    (m_0 s^2 + c_0 s + k_0 + c_1 s + k_1) x_0 & = (c_0 s + k_0) x_{-1} + (c_1 s + k_1) x_1
+\end{align*}
+
+<p>
+The second equation gives us:
+\[
+     x_0 = \frac{c_0 s + k_0}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_{-1} + \frac{c_1 s + k_1}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_1
+\]
+</p>
+
+<p>
+And if we reinject \(x_0\) into the first equation, we have:
+</p>
+
+<p>
+\[
+  (m_1 s^2 + c_1 s + k_1) x_1 = \frac{(c_1 s + k_1) (c_0 s + k_0)}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_{-1} + \frac{(c_1 s + k_1) (c_1 s + k_1)}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_1 + g_1
+\]
+</p>
+
+<p>
+Finally:
+</p>
+
+<p>
+\[
+   \frac{m_1 s^2 (c_1 s + k_1) + (m_0 s^2 + c_0 s + k_0)(m_1 s^2 + c_1 s + k_1)}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_1 = \frac{(c_1 s + k_1) (c_0 s + k_0)}{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1} x_{-1} + g_1
+\]
+</p>
+
+<p>
+\[
+  x_1 = \frac{(c_1 s + k_1) (c_0 s + k_0) (m_0 s^2 + c_0 s + k_0 + c_1 s + k_1)}{(m_0 s^2 + c_0 s + k_0 + c_1 s + k_1) (m_1 s^2 + c_1 s + k_1) (m_1 s^2 (c_1 s + k_1) + (m_0 s^2 + c_0 s + k_0)(m_1 s^2 + c_1 s + k_1))} x_{-1} +
+        \frac{m_0 s^2 + c_0 s + k_0 + c_1 s + k_1}{m_1 s^2 (c_1 s + k_1) + (m_0 s^2 + c_0 s + k_0)(m_1 s^2 + c_1 s + k_1)} g_1
+\]
+</p>
+
+<p>
+And we find \(T_{g_1 \rightarrow x_1}\) as before.
+</p>
+
+\begin{equation}
+T_{g_1 \rightarrow x_1} = \frac{(c_1 s + k_1) + (m_0 s^2 + c_0 s + k_0)}{(m_0 s^2 + c_0 s + k_0)(m_1 s^2 + c_1 s + k_1) + m_1 s^2 (c_1 s + k_1)}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgf745f62" class="outline-3">
+<h3 id="orgf745f62"><span class="section-number-3">1.6</span> Matlab Implementation</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+A small matlab toolbox have been developed and is accessible on <a href="https://github.com/tdehaeze/stacked-elements-toolbox">Github</a>. This toolbox contains many functions that easily permit to create systems using the presented architecture and connect them.
+</p>
+
+<ul class="org-ul">
+<li><code>createElement</code> permits to create a mass-spring-damper system (2nd, 3rd and 4th arguments, the 1st on is the number \(i\)). It creates a state space system with named inputs and outputs based on \(i\)</li>
+<li><code>connectElements</code> permits to connect all the elements</li>
+<li><code>createForceActuator</code> permits to create a force actuator between 2 systems (1st and 2nd arguments)</li>
+<li><code>connectForceActuator</code> permits to connect the actuator to the system</li>
+<li><code>createDisplacementSensor</code> permits to create a displacement sensor between 2 elements</li>
+<li><code>connectDisplacementSensor</code> permits to connect the sensor to the system</li>
+</ul>
+
+<p>
+All functions are well documented, you can type <code>help functionName</code> to have some help. Also, you should check the demo files inside the demo folder.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgd3379ca" class="outline-2">
+<h2 id="orgd3379ca"><span class="section-number-2">2</span> Method 2 - How to connect a model on top of a flexible support</h2>
+<div class="outline-text-2" id="text-2">
+
+<div id="org0d50c28" class="figure">
+<p><img src="./figures/flexible_support.png" alt="flexible_support.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Flexible support</p>
+</div>
+
+\begin{equation*}
+  \begin{cases}
+    x_i& \text{is the displacment of the system i}\\
+    x_{s}& \text{is the displacment of the flexible support}\\
+    f_{s}& \text{is the force applied by the system on the flexible support}
+  \end{cases}
+\end{equation*}
+
+<p>
+Second Newton's laws of motion on the mass \(m_i\):
+</p>
+
+<p>
+\[ m_i \ddot{x_i} = k_i (x_s - x_i) + c_i (\dot{x_s} - \dot{x_i}) \]
+</p>
+
+<p>
+After Laplace transformation:
+</p>
+
+<p>
+\[ m_i s^2 x_i = (c_i s + k_i) (x_s - x_i) \]
+</p>
+
+<p>
+Let's express \(F_s\):
+</p>
+
+<p>
+\[ F_s = (c_i s + k_i) (x_i - x_s) \]
+</p>
+
+
+<div id="org5426f55" class="figure">
+<p><img src="./figures/flexible_support_connection.png" alt="flexible_support_connection.png" />
+</p>
+<p><span class="figure-number">Figure 8: </span>Flexible support Connection</p>
+</div>
+
+
+<p>
+In order to connect the system to the flexible support, we only need the transfer function between \(F_s\) and \(x_s\). This is usually done by identification.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-12-20 Wed 15:23</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

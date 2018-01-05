@@ -7,5 +7,9 @@ Add ~./src/~ to your Matlab path.
 
 ** Example
 
-See ~./demo/dual_mass_system.m~.
+See [[./demo/dual_mass_system.m]].
+
+** Documentation
+
+See [[./doc/presentation_connection.org]].
 

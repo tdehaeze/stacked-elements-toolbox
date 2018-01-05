@@ -4,8 +4,8 @@ close all;
 clc;
 
 %
-s1 = createElement(1, 20, 1e5, 1000);
-s2 = createElement(2, 20,  2e8, 1000);
+s1 = createElement(1, 20, 1e5, 100);
+s2 = createElement(2, 20,  2e8, 5000);
 
 system = connectElements({s1, s2});
 
@@ -19,7 +19,7 @@ system = connectForceActuator(system, F);
 
 %
 bode(getSubTf(system, 'x0', 'D12'))
-bode(getSubTf(system, 'F12', 'D12'))
+bode(getSubTf(system, 'F12', 'd2'))
 
 %
 t  = 0:1e-5:2;
